@@ -1,0 +1,27 @@
+psp
+
+POKAPOKA.BHD contain offset and size info
+POKAPOKA.BND (zlib)compressed files
+POKAPOKA.FAT conatins file name. I did't figure strcuture yet.
+
+font/img in gim format
+
+
+xxx.bnd -> simple container
+
+POKAPOKA.DBN -> pgdecrypt
+should have same crc with POKAPOKA.BND after decrypt.
+safe for ignore it.
+
+3ds
+ziptks -> just zlib compressed tks. zlib example code should enough to compress/decompress.
+param -> some paramater for game? might not need for translation. contains shift-jis chars.
+fmg -> contain scripts. shift-jis or unicode chars depend on header. 
+
+
+menu.arc -> nintendo sarc. 
+bffnt -> 3ds(wiiu) font.
+BFLYT... etc -> image or layout.
+There is many tools that can handle this. Like Kuriimu.
+
+xxx.bnd -> simple container

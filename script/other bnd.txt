@@ -1,0 +1,32 @@
+# Ninja Blade (BND / TBND format)
+#
+# Written by Ekey (h4x0r)
+# http://www.progamercity.net
+# 
+# script for QuickBMS http://quickbms.aluigi.org
+#Edited for Poka Poka Airou Village
+# The file structure is simple, so rebuilding is might possible...
+# What is purpose for offset???
+
+idstring "BND"
+
+goto 0xC
+get TABLEOFFSET long
+get FILES long
+
+#print %TABLEOFFSET%
+#print %FILES%
+
+goto 0x20
+
+for i = 0 < FILES
+    get DUMMY long
+    get OFFSET long
+    get SIZE long
+    get NAMEOFFSET long
+    savepos TEMP
+    goto NAMEOFFSET
+    get NAME string
+    log NAME OFFSET SIZE
+    goto TEMP
+next i
