@@ -6,18 +6,21 @@
 # script for QuickBMS http://quickbms.aluigi.org
 #Edited for Poka Poka Airou Village
 # The file structure is simple, so rebuilding is might possible...
-# What is purpose for offset???
+# What is purpose for offsets???
+#0x00 - 0x0b 42 4E 44 00 FF FF 00 00 D3 00 00 00?
 
 idstring "BND"
 
 goto 0xC
-get TABLEOFFSET long
+get size long
 get FILES long
-
-#print %TABLEOFFSET%
+get ZEROS1 long
+get UNK long
+get ZEROS2 long
+#print %size%
 #print %FILES%
 
-goto 0x20
+#goto 0x20
 
 for i = 0 < FILES
     get INDEX long
