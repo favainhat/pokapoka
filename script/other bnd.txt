@@ -20,7 +20,7 @@ get FILES long
 goto 0x20
 
 for i = 0 < FILES
-    get DUMMY long
+    get INDEX long
     get OFFSET long
     get SIZE long
     get NAMEOFFSET long
