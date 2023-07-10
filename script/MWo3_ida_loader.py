@@ -52,7 +52,7 @@ def load_file(f, neflags, format):
 	# Set VA for .text and add the segment
 	textVA = entrypoint
 	dataVA = entrypoint + textLen + MWo3_HEADER_SIZE
-	bssVA = entrypoint + textLen + dataLen
+	bssVA = entrypoint + textLen + dataLen + MWo3_HEADER_SIZE
 	f.file2base(0, textVA, textVA + textLen, True)
 	idaapi.add_segm(0, textVA, textVA + textLen, ".text", "CODE")
 

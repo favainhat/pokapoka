@@ -25,11 +25,13 @@ MWo3_HEADER_MAGIC 		= b"MWo3"
 MWo3_HEADER_SIZE 		= 64
 
 def accept_file(li, n):
-	li.seek(0)
-	magic = li.read(4)
-	if magic == MWo3_HEADER_MAGIC:
-		return "MWo3"
-	return 0
+	retval = 0
+	if n == 0:
+		li.seek(0)
+		magic = li.read(4)
+		if magic == MWo3_HEADER_MAGIC:
+			retval = "MWo3"
+	return retval
 
 def load_file(f, neflags, format):
 	f.seek(0)
@@ -48,7 +50,7 @@ def load_file(f, neflags, format):
 	# Set VA for .text and add the segment
 	textVA = entrypoint
 	dataVA = entrypoint + textLen + MWo3_HEADER_SIZE
-	bssVA = entrypoint + textLen + dataLen
+	bssVA = entrypoint + textLen + dataLen + MWo3_HEADER_SIZE
 	f.file2base(0, textVA, textVA + textLen, True)
 	idaapi.add_segm(0, textVA, textVA + textLen, ".text", "CODE")
 
